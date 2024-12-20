@@ -1,0 +1,136 @@
+    /* General container styling */
+    .container {
+        max-width: 800px;
+        margin: 40px auto;
+        font-family: Arial, sans-serif;
+        padding: 20px;
+    }
+
+    /* Title styling */
+    .form-title {
+        text-align: center;
+        color: #4a90e2;
+        font-size: 2rem;
+        margin-bottom: 30px;
+    }
+
+    /* Card container */
+    .form-card {
+        background: #ffffff;
+        padding: 20px 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Section titles */
+    .section-title {
+        color: #4a90e2;
+        font-size: 1.5rem;
+        margin-top: 30px;
+        margin-bottom: 20px;
+    }
+
+    /* Input controls */
+    .input-control {
+        width: 100%;
+        padding: 10px 15px;
+        font-size: 1rem;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        margin-top: 5px;
+        margin-bottom: 20px;
+        background-color: #f9f9f9;
+        transition: border-color 0.3s ease;
+    }
+
+    .input-control:focus {
+        border-color: #4a90e2;
+        outline: none;
+        background-color: #fff;
+    }
+
+    /* Form rows */
+    .form-row {
+        display: flex;
+        gap: 20px;
+    }
+
+    .form-row .form-group {
+        flex: 1;
+    }
+
+    /* Buttons */
+    .btn-primary, .btn-secondary {
+        display: inline-block;
+        text-align: center;
+        padding: 10px 20px;
+        font-size: 1rem;
+        border-radius: 5px;
+        text-decoration: none;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn-primary {
+        background-color: #4a90e2;
+    }
+
+    .btn-primary:hover {
+        background-color: #3a78b0;
+    }
+
+    .btn-secondary {
+        background-color: #aaa;
+        margin-right: 10px;
+    }
+
+    .btn-secondary:hover {
+        background-color: #888;
+    }
+
+    /* Form actions */
+    .form-actions {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 20px;
+    }
+    .btn-danger {
+        background-color:rgb(60, 131, 231);
+        font-size: 1.1rem;
+        padding: 10px 25px;
+        border: none;
+        border-radius: 30px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        text-transform: uppercase;
+        font-weight: bold;
+        transition: all 0.3s ease;
+        color: white;
+        border: none;
+        cursor: pointer;
+    }
+
+    .btn-logout {
+    background: linear-gradient(45deg, #ff6f61, #c0392b);
+    color: white;
+    font-size: 1.1rem;
+    padding: 10px 25px;
+    border: none;
+    border-radius: 30px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    text-transform: uppercase;
+    font-weight: bold;
+    text-align: center;
+    transition: all 0.3s ease;
+    display: inline-block;
+    margin-bottom: 20px;
+    }
+
+    .btn-logout:hover {
+        background: linear-gradient(45deg, #e74c3c, #a93226);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        transform: scale(1.05);
+        cursor: pointer;
+    }

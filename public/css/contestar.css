@@ -1,0 +1,83 @@
+    .container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding-top: 50px;
+    }
+
+    .details-card, .stats-card {
+        background: #ffffff;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        margin-bottom: 30px;
+    }
+
+    .card-header {
+        background-color: #4a90e2;
+        color: white;
+        padding: 20px;
+        border-radius: 8px 8px 0 0;
+    }
+
+    .stats-card {
+        padding: 20px;
+        text-align: center; /* Centrar el gráfico */
+    }
+
+    /* Reducir tamaño del gráfico */
+    #estadisticasChart {
+        width: 350px;   /* Ancho reducido */
+        height: 350px;  /* Altura reducida */
+        margin: 0 auto; /* Centrar el gráfico */
+    }
+
+    button {
+        padding: 12px;
+        font-size: 1.1rem;
+        border-radius: 5px;
+        background-color: #4a90e2;
+        color: white;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    button:hover {
+        background-color: #357ab8;
+    }
+
+    .btn-danger {
+        background-color: rgb(60, 131, 231);
+        font-size: 1.1rem;
+        padding: 10px 25px;
+        border: none;
+        border-radius: 30px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        text-transform: uppercase;
+        font-weight: bold;
+        transition: all 0.3s ease;
+        color: white;
+        border: none;
+        cursor: pointer;
+    }
+    .btn-logout {
+        background: linear-gradient(45deg, #ff6f61, #c0392b);
+        color: white;
+        font-size: 1.1rem;
+        padding: 10px 25px;
+        border: none;
+        border-radius: 30px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        text-transform: uppercase;
+        font-weight: bold;
+        text-align: center;
+        transition: all 0.3s ease;
+        display: inline-block;
+        margin-bottom: 20px;
+    }
+
+    .btn-logout:hover {
+        background: linear-gradient(45deg, #e74c3c, #a93226);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        transform: scale(1.05);
+        cursor: pointer;
+    }

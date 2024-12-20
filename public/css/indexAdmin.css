@@ -1,0 +1,130 @@
+        /* Centrado de contenido y tabla */
+        .container {
+            margin-top: 30px;
+        }
+
+        .table {
+            margin-top: 20px;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            overflow: hidden;
+            width: 100%;
+        }
+
+        .table th, .table td {
+            vertical-align: middle;
+            padding: 15px;
+            text-align: left;
+        }
+
+        .table-responsive {
+            margin-top: 20px;
+        }
+
+        .table-striped tbody tr:nth-of-type(odd) {
+            background-color: #f9f9f9;
+        }
+
+        .thead-custom {
+            background-color: #343a40;
+            color: white;
+        }
+
+        /* Botón de Nueva Pregunta */
+        .btn-lg {
+            font-size: 1.2rem;
+            padding: 10px 20px;
+        }
+
+        .btn-sm {
+            font-size: 0.9rem;
+            padding: 5px 10px;
+        }
+
+        .btn i {
+            margin-right: 5px;
+        }
+
+        .btn-gradient {
+            background: linear-gradient(45deg, #4caf50, #008c76);
+            color: white;
+        }
+
+        .btn-gradient:hover {
+            background: linear-gradient(45deg, #388e3c, #00695c);
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .btn-warning {
+            background-color: #f39c12;
+            border-color: #f39c12;
+        }
+
+        .btn-danger {
+            background-color: #e74c3c;
+            border-color: #e74c3c;
+        }
+
+        .btn-warning:hover {
+            background-color: #f1c40f;
+            border-color: #f1c40f;
+        }
+
+        .btn-danger:hover {
+            background-color: #c0392b;
+            border-color: #c0392b;
+        }
+
+        .btn-logout {
+            background: linear-gradient(45deg, #ff6f61, #c0392b);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 1rem;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            display: inline-block;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .btn-logout:hover {
+            background: linear-gradient(45deg, #e74c3c, #a93226);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-action {
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-action:hover {
+            background-color: #d1d1d1;
+        }
+
+        .table-hover tbody tr:hover {
+            background-color: #f1f1f1;
+            cursor: pointer;
+        }
+
+        .shadow-lg {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .text-primary {
+            color: #3498db !important;
+        }
+
+        .bg-white {
+            background-color: white !important;
+        }
+
+        .rounded {
+            border-radius: 10px;
+        }
+
+        .col-md-10 {
+            max-width: 100%;
+        }

@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Preguntas Disponibles{% endblock %}
+
+{% block body %}
+<div class="container mt-5 mb-5">
+    <a href="{{ path('app_logout') }}" class="btn btn-logout">Cerrar Sesión</a>
+    <h1 class="mb-5 text-center text-primary font-weight-bold">Preguntas Activas</h1>
+    <div class="row justify-content-center">
+        {% for pregunta in preguntas %}
+        <div class="col-md-8 col-lg-6 mb-4 d-flex justify-content-center">
+            <div class="card shadow-lg border-0 rounded-lg w-100">
+                <div class="card-header bg-primary text-white text-center py-3 rounded-top">
+                    <h3 class="font-weight-bold mb-0 text-uppercase">{{ pregunta.titulo }}</h3>
+                </div>
+                <div class="card-body d-flex justify-content-center align-items-center py-4">
+                    {% if pregunta.id in preguntasRespondidas %}
+                        <!-- Botón 'Respondido' -->
+                        <button class="btn btn-danger btn-lg btn-rounded-gradient-respuesta px-5" disabled>Respondido</button>
+                        <!-- Botón 'Ver Respuesta' -->
+                        <a href="{{ path('pregunta_contestar', {'id': pregunta.id}) }}" class="btn btn-info btn-lg btn-rounded-gradient px-5 ml-2">
+                            Ver Respuesta <i class="fas fa-eye ml-2"></i>
+                        </a>
+                    {% else %}
+                        <!-- Botón 'Responder' -->
+                        <a href="{{ path('pregunta_contestar', {'id': pregunta.id}) }}" class="btn btn-lg btn-rounded-gradient px-5">
+                            Responder <i class="fas fa-pencil-alt ml-2"></i>
+                        </a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        {% else %}
+        <div class="col-12">
+            <div class="alert alert-info text-center">
+                No hay preguntas disponibles en este momento.
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
+
+{% block stylesheets %}
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/indexPregunta.css') }}">
+{% endblock %}
+
+{% block javascripts %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Verificar si la página ya ha sido recargada
+        if (!localStorage.getItem('pageReloaded')) {
+            // Establecer la clave en localStorage para evitar recargas infinitas
+            localStorage.setItem('pageReloaded', 'true');
+            // Recargar la página
+            location.reload();
+        }
+    });
+</script>
+{% endblock %}

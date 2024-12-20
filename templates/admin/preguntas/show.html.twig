@@ -1,0 +1,93 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Detalles de la Pregunta{% endblock %}
+
+{% block body %}
+<div class="container mt-5">
+    <a href="{{ path('app_logout') }}" class="btn btn-logout">Cerrar Sesión</a>
+    <div class="details-card">
+        <div class="card-header">
+            <h2>Detalles de la Pregunta</h2>
+        </div>
+        <div class="card-body">
+            <h3 class="section-title">Título</h3>
+            <p class="card-text">{{ pregunta.titulo }}</p>
+
+            <h3 class="section-title">Fechas</h3>
+            <p class="card-text">
+                <strong>Inicio:</strong> {{ pregunta.fechaInicio|date('d-m-Y H:i') }}<br>
+                <strong>Fin:</strong> {{ pregunta.fechaFin ? pregunta.fechaFin|date('d-m-Y H:i') : 'N/A' }}
+            </p>
+
+            <h3 class="section-title">Respuestas</h3>
+            <ul class="response-list">
+                {% if pregunta.respuesta1 %}<li>{{ pregunta.respuesta1 }}</li>{% endif %}
+                {% if pregunta.respuesta2 %}<li>{{ pregunta.respuesta2 }}</li>{% endif %}
+                {% if pregunta.respuesta3 %}<li>{{ pregunta.respuesta3 }}</li>{% endif %}
+                {% if pregunta.respuesta4 %}<li>{{ pregunta.respuesta4 }}</li>{% endif %}
+            </ul>
+
+            <h3 class="section-title">Estadísticas</h3>
+            <canvas id="estadisticasChart" width="300" height="300"></canvas> <!-- Tamaño más pequeño -->
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/show.css') }}">
+{% endblock %}
+
+
+{% block javascripts %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const conteoRespuestas = {{ conteoRespuestas|json_encode|raw }};
+
+        const opciones = [
+            '{{ pregunta.respuesta1 }}',
+            '{{ pregunta.respuesta2 }}',
+            '{{ pregunta.respuesta3 }}',
+            '{{ pregunta.respuesta4 }}'
+        ];
+
+        const valores = [
+            conteoRespuestas[1] || 0,
+            conteoRespuestas[2] || 0,
+            conteoRespuestas[3] || 0,
+            conteoRespuestas[4] || 0
+        ];
+
+        const ctx = document.getElementById('estadisticasChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'pie',  // Cambiado a tipo 'pie' para gráfico de quesito
+            data: {
+                labels: opciones,
+                datasets: [{
+                    label: 'Respuestas',
+                    data: valores,
+                    backgroundColor: ['#ff6384', '#36a2eb', '#ffcd56', '#4caf50'],
+                    borderColor: ['#ff6384', '#36a2eb', '#ffcd56', '#4caf50'],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top'
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(tooltipItem) {
+                                return opciones[tooltipItem.dataIndex] + ': ' + valores[tooltipItem.dataIndex] + ' respuestas';
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    });
+</script>
+{% endblock %}

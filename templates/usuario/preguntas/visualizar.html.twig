@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Visualizar Pregunta{% endblock %}
+
+{% block body %}
+<div class="container mt-5">
+    <h1 class="mb-4 text-center">{{ pregunta.titulo }}</h1>
+    <h3 class="mb-3">Opciones de Respuesta</h3>
+    <ul>
+        <li>{{ pregunta.respuesta1 }}</li>
+        <li>{{ pregunta.respuesta2 }}</li>
+        <li>{{ pregunta.respuesta3 }}</li>
+        <li>{{ pregunta.respuesta4 }}</li>
+    </ul>
+    <h3 class="mt-5 mb-3">Estadísticas</h3>
+    <canvas id="estadisticasChart"></canvas>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const conteoRespuestas = {{ conteoRespuestas|json_encode|raw }};
+        const opciones = [
+            '{{ pregunta.respuesta1 }}',
+            '{{ pregunta.respuesta2 }}',
+            '{{ pregunta.respuesta3 }}',
+            '{{ pregunta.respuesta4 }}'
+        ];
+        const valores = [conteoRespuestas[1], conteoRespuestas[2], conteoRespuestas[3], conteoRespuestas[4]];
+
+        const ctx = document.getElementById('estadisticasChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: opciones,
+                datasets: [{
+                    label: 'Respuestas',
+                    data: valores,
+                    backgroundColor: ['#4caf50', '#ff9800', '#f44336', '#2196f3'],
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: { beginAtZero: true }
+                }
+            }
+        });
+    });
+</script>
+{% endblock %}

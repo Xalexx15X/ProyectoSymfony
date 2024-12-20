@@ -1,0 +1,149 @@
+    /* Contenedor principal */
+    .container {
+        background-color: #f8f9fa;
+        padding: 30px 20px;
+        border-radius: 12px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Tarjetas */
+    .card {
+        border: none;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 18px rgba(0, 0, 0, 0.2);
+    }
+
+    .card-header {
+        background: linear-gradient(135deg, #007bff, #0056b3);
+        border-radius: 10px 10px 0 0;
+        color: white;
+        font-size: 1.5rem;
+    }
+
+    .card-body {
+        background-color: #ffffff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* Botón redondeado con gradiente */
+    .btn-rounded-gradient {
+        background: linear-gradient(135deg, #28a745, #218838);
+        color: #fff;
+        font-size: 1.1rem;
+        padding: 10px 25px;
+        border: none;
+        border-radius: 30px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        text-transform: uppercase;
+        font-weight: bold;
+        transition: all 0.3s ease;
+    }
+
+    .btn-danger {
+        background-color:rgb(60, 131, 231);
+        font-size: 1.1rem;
+        padding: 10px 25px;
+        border: none;
+        border-radius: 30px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        text-transform: uppercase;
+        font-weight: bold;
+        transition: all 0.3s ease;
+        color: white;
+        border: none;
+        cursor: pointer;
+    }
+
+    .btn-rounded-gradient-respuesta {
+        background-color: #e74c3c;
+        border-color: #e74c3c;
+        font-size: 1.1rem;
+        padding: 10px 25px;
+        border: none;
+        border-radius: 30px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        text-transform: uppercase;
+        font-weight: bold;
+        transition: all 0.3s ease;
+        color: white;
+    }
+
+    .btn-info {
+        background-color: #17a2b8;
+        color: white;
+        font-size: 1.1rem;
+        padding: 10px 25px;
+        border: none;
+        border-radius: 30px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        text-transform: uppercase;
+        font-weight: bold;
+        transition: all 0.3s ease;
+    }
+
+    .btn-info:hover {
+        background-color: #138496;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        transform: scale(1.03);
+        color: #fff;
+    }
+
+    /* Títulos */
+    h1 {
+        font-size: 2.5rem;
+        color: #343a40;
+    }
+
+    h3 {
+        font-size: 1.8rem;
+        font-weight: bold;
+        letter-spacing: 1px;
+        line-height: 1.5;
+    }
+
+    /* Estilo general */
+    .alert-info {
+        font-size: 1.2rem;
+        padding: 20px;
+        border-radius: 10px;
+        background-color: #d1e7fd;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+        h1 {
+            font-size: 2rem;
+        }
+        h3 {
+            font-size: 1.5rem;
+        }
+    }
+    .btn-logout {
+        background: linear-gradient(45deg, #ff6f61, #c0392b);
+        color: white;
+        font-size: 1.1rem;
+        padding: 10px 25px;
+        border: none;
+        border-radius: 30px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        text-transform: uppercase;
+        font-weight: bold;
+        text-align: center;
+        transition: all 0.3s ease;
+        display: inline-block;
+        margin-bottom: 20px;
+    }
+
+    .btn-logout:hover {
+        background: linear-gradient(45deg, #e74c3c, #a93226);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        transform: scale(1.05);
+        cursor: pointer;
+    }

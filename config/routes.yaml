@@ -3,3 +3,35 @@ controllers:
         path: ../src/Controller/
         namespace: App\Controller
     type: attribute
+
+security_login:
+    path: /login
+    controller: App\Controller\SecurityController::login
+
+security_register:
+    path: /register
+    controller: App\Controller\RegistrationController::register
+
+home:
+    path: /
+    controller: App\Controller\HomeController::index
+
+admin_questions:
+    path: /admin/preguntas
+    controller: App\Controller\Admin\QuestionController::index
+
+
+user_active_question:
+    path: /pregunta/activa
+    controller: App\Controller\User\QuestionController::active
+
+user_answer_question:
+    path: /pregunta/contestar/{id}
+    controller: App\Controller\User\QuestionController::answer
+
+api_pregunta_estadistica:
+    path: /api/pregunta/estadistica/{id}
+    controller: App\Controller\Api\PreguntaApiController::getEstadisticas
+    methods: GET
+
+

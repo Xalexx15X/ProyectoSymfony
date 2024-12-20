@@ -1,0 +1,105 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Contestar Pregunta{% endblock %}
+
+{% block body %}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="details-card">
+                <div class="card-header text-center">
+                    <h2>{{ pregunta.titulo }}</h2>
+                </div>
+                <a href="{{ path('app_logout') }}" class="btn btn-logout">Cerrar Sesión</a>
+                <div class="card-body">
+                    <h3 class="section-title">Fechas</h3>
+                    <p class="card-text">
+                        <strong>Inicio:</strong> {{ pregunta.fechaInicio|date('d-m-Y H:i') }}<br>
+                        <strong>Fin:</strong> {{ pregunta.fechaFin ? pregunta.fechaFin|date('d-m-Y H:i') : 'N/A' }}
+                    </p>
+
+                    {% if not preguntaRespondida %}
+                        <h3 class="section-title">Responde a la pregunta</h3>
+                        {{ form_start(form) }}
+                        <div class="form-group">
+                            {{ form_row(form.respuesta) }}
+                        </div>
+                        <button type="submit" class="btn btn-success w-100">Enviar Respuesta</button>
+                        {{ form_end(form) }}
+                    {% else %}
+                        <h3 class="text-danger">Ya has respondido esta pregunta.</h3>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card stats-card">
+                <div class="card-header text-center">
+                    <h3>Estadísticas de Respuestas</h3>
+                </div>
+                <div class="card-body">
+                    <canvas id="estadisticasChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/contestar.css') }}">
+{% endblock %}
+
+{% block javascripts %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const conteoRespuestas = {{ conteoRespuestas|json_encode|raw }};
+
+        const opciones = [
+            '{{ pregunta.respuesta1 }}',
+            '{{ pregunta.respuesta2 }}',
+            '{{ pregunta.respuesta3 }}',
+            '{{ pregunta.respuesta4 }}'
+        ];
+
+        const valores = [
+            conteoRespuestas[1] || 0,
+            conteoRespuestas[2] || 0,
+            conteoRespuestas[3] || 0,
+            conteoRespuestas[4] || 0
+        ];
+
+        const ctx = document.getElementById('estadisticasChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'pie',  // Cambiado a tipo 'pie' para gráfico de quesito
+            data: {
+                labels: opciones,
+                datasets: [{
+                    label: 'Respuestas',
+                    data: valores,
+                    backgroundColor: ['#ff6384', '#36a2eb', '#ffcd56', '#4caf50'],
+                    borderColor: ['#ff6384', '#36a2eb', '#ffcd56', '#4caf50'],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top'
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(tooltipItem) {
+                                return opciones[tooltipItem.dataIndex] + ': ' + valores[tooltipItem.dataIndex] + ' respuestas';
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    });
+</script>
+{% endblock %}
